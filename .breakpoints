@@ -1,0 +1,18 @@
+{
+  "files": {
+    "apps/static/assets/demo/demo.js": [
+      {
+        "id": "e4dcd9fa-7327-402a-a1c6-436678afb9ec",
+        "line": 464,
+        "version": 233,
+        "index": 11939
+      },
+      {
+        "id": "37ca6e44-97b5-4a1a-a223-36a61b057f28",
+        "line": 474,
+        "version": 233,
+        "index": 12205
+      }
+    ]
+  }
+}

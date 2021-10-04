@@ -374,7 +374,7 @@ demo = {
         pointHoverRadius: 4,
         pointHoverBorderWidth: 15,
         pointRadius: 4,
-        data: [80, 100, 70, 80, 120, 80],
+        data: [80, 100, 70, 80, 120, 80],//Total Shipments的測試資料
       }]
     };
 
@@ -410,7 +410,7 @@ demo = {
         pointHoverRadius: 4,
         pointHoverBorderWidth: 15,
         pointRadius: 4,
-        data: [90, 27, 60, 12, 80],
+        data: [90, 27, 60, 12, 80],///Completed Tasks的測試資料
       }]
     };
 
@@ -424,7 +424,9 @@ demo = {
 
 
     var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
+
+    
+    var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];//Accounts的測試資料
 
 
     var ctx = document.getElementById("chartBig1").getContext('2d');
@@ -459,7 +461,7 @@ demo = {
       options: gradientChartOptionsConfigurationWithTooltipPurple
     };
 
-
+    ////建立Accounts圖表
     var myChartData = new Chart(ctx, config);
     $("#0").click(function() {
       var data = myChartData.config.data;
@@ -467,8 +469,9 @@ demo = {
       data.labels = chart_labels;
       myChartData.update();
     });
+    ////
 
-    ////輸入Purchase資料
+    ////建立Purchase圖表
     $("#1").click(function() {
       var chart_data = [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120];
       var data = myChartData.config.data;
@@ -477,7 +480,7 @@ demo = {
       myChartData.update();
     });
 
-    ////輸入Session資料
+    ////建立Session圖表
     $("#2").click(function() {
       var chart_data = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
       var data = myChartData.config.data;
@@ -495,7 +498,7 @@ demo = {
     gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
     gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
 
-
+    ////建立Daily Sales圖表
     var myChart = new Chart(ctx, {
       type: 'bar',
       responsive: true,
@@ -518,6 +521,7 @@ demo = {
       },
       options: gradientBarChartConfiguration
     });
+    ////
 
   },
 
