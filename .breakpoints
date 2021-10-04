@@ -13,6 +13,14 @@
         "version": 233,
         "index": 12205
       }
+    ],
+    "apps/templates/home/index.html": [
+      {
+        "id": "84f0d766-0588-4d54-a277-c7ec4943e304",
+        "line": 49,
+        "version": 158,
+        "index": 2103
+      }
     ]
   }
 }
