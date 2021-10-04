@@ -1,5 +1,13 @@
 {
   "files": {
+    "apps/static/assets/css/black-dashboard.css": [
+      {
+        "id": "6321a5ae-ac22-40df-98f7-35dcfb2c2367",
+        "line": 3507,
+        "version": 1,
+        "index": 100388
+      }
+    ],
     "apps/static/assets/demo/demo.js": [
       {
         "id": "e4dcd9fa-7327-402a-a1c6-436678afb9ec",
@@ -14,12 +22,96 @@
         "index": 12205
       }
     ],
+    "apps/static/assets/scss/black-dashboard/bootstrap/_card.scss": [
+      {
+        "id": "a4e5474a-d56c-4949-92cb-70aecc072f77",
+        "line": 72,
+        "version": 5,
+        "index": 1379
+      },
+      {
+        "id": "88b4bb15-ee32-4006-b33a-bcbb97a594bb",
+        "line": 72,
+        "version": 5,
+        "index": 1379
+      }
+    ],
     "apps/templates/home/index.html": [
       {
         "id": "84f0d766-0588-4d54-a277-c7ec4943e304",
-        "line": 49,
-        "version": 158,
-        "index": 2103
+        "line": 10,
+        "version": 317,
+        "index": 211
+      },
+      {
+        "id": "bbbff23e-1683-446c-aecc-ae393d0f8b0b",
+        "line": 11,
+        "version": 456,
+        "index": 296
+      },
+      {
+        "id": "5ad5cbe1-1ddb-44dd-a07e-77d764b2f20a",
+        "line": 14,
+        "version": 476,
+        "index": 429
+      },
+      {
+        "id": "d753a393-1098-415e-b615-107b8b3bb047",
+        "line": 107,
+        "version": 341,
+        "index": 3916
+      },
+      {
+        "id": "47e135f1-66f9-4e53-b8c5-9aa68d10b64a",
+        "line": 312,
+        "version": 454,
+        "index": 14373
+      },
+      {
+        "id": "44b0c943-0a0e-4b52-b745-51535a267a9f",
+        "line": 418,
+        "version": 611,
+        "index": 17537
+      },
+      {
+        "id": "16758f1a-6e8e-401f-a3ad-261ea943dbef",
+        "line": 421,
+        "version": 670,
+        "index": 17729
+      },
+      {
+        "id": "e55780e5-c93e-4ba9-9973-9d3999b36c80",
+        "line": 422,
+        "version": 670,
+        "index": 17736
+      },
+      {
+        "id": "46a4c193-f9dd-4641-94bc-e63defc9a2f0",
+        "line": 424,
+        "version": 702,
+        "index": 17804
+      },
+      {
+        "id": "83cd6a80-257a-46db-bf20-41056ac62b30",
+        "line": 430,
+        "version": 781,
+        "index": 17938
+      }
+    ],
+    "apps/templates/includes/fixed-plugin.html": [
+      {
+        "id": "dea6a8e6-9411-41b1-80ff-7577c636d88c",
+        "line": 3,
+        "version": 43,
+        "index": 30
+      }
+    ],
+    "apps/templates/layouts/base-rtl.html": [
+      {
+        "id": "8e091749-4002-4b5f-977f-936589b0faa6",
+        "line": 67,
+        "version": 2,
+        "index": 2143
       }
     ]
   }
