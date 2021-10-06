@@ -394,6 +394,8 @@
             <h4 class="card-title">New Event</h4>
           </div>
           <div class="card-body">
+            {% csrf_token %} 
+
             <div class="TimeInput" id="TimeInput">
                 <label for="eventname" class="form-label">
                   <h5>可用時間</h5>
@@ -410,13 +412,14 @@
               <label for="eventname" class="form-label">
                 <h5>事件名稱</h5>
               </label>
-              <input class="form-control" list="datalistOptions" id="eventname" placeholder="EX: 會議 專案...">
+              <!-- <input class="form-control" list="datalistOptions" id="eventname" placeholder="EX: 會議 專案...">
               <datalist id="datalistOptions">
                 <option value="晨會">
                 <option value="專案討論">
                 <option value="回報">
                 <option value="聚餐">
-              </datalist>
+              </datalist> -->
+              {{ form.eventname }}
             </div>
 
             <div class="mt-4">        
