@@ -394,7 +394,7 @@
             <h4 class="card-title">New Event</h4>
           </div>
           <div class="card-body">
-            {% csrf_token %} 
+ 
 
             <div class="TimeInput" id="TimeInput">
                 <label for="eventname" class="form-label">
@@ -407,44 +407,53 @@
             </div>        
 
             <hr>
-
+            {% csrf_token %}
             <div class="mt-4">        
-              <label for="eventname" class="form-label">
+              <label for="eventName" class="form-label">
                 <h5>事件名稱</h5>
               </label>
-              <!-- <input class="form-control" list="datalistOptions" id="eventname" placeholder="EX: 會議 專案...">
+              <!-- <input class="form-control" list="datalistOptions" id="eventname" placeholder="EX: 會議 專案..."> -->
+              {{ form.eventName }}
               <datalist id="datalistOptions">
                 <option value="晨會">
                 <option value="專案討論">
                 <option value="回報">
                 <option value="聚餐">
-              </datalist> -->
-              {{ form.eventname }}
+              </datalist>
+
             </div>
 
             <div class="mt-4">        
-              <label for="eventdate" class="form-label">
+              <label for="eventDate" class="form-label">
                 <h5>開始時間</h5>
               </label>
-              <input class="form-control" type="date" id="eventdate" value="2021-09-22">
+              {{ form.eventDate }}
+              <!-- <input class="form-control" type="date" id="eventdate" value="2021-09-22"> -->
             </div>  
 
             <div class="mt-4">    
-              <label for="eventdate" class="form-label"><h5>預估時間(小時)</h5></label>       
-              <input class="form-control" type="number" id = "eventcosttime" value=1 step="0.01" min="0">
+              <label for="predTime" class="form-label">
+                <h5>預估時間(小時)</h5>
+              </label>       
+              {{ form.predTime }}
+              <!-- <input class="form-control" type="number" id = "eventcosttime" value=1 step="0.01" min="0"> -->
             </div>
 
             <div class="mt-4 mb-4">
-              <label for="eventdate" class="form-label"><h5>緊急程度</h5></label>       
-              <select class="form-control" id = "emerge">
-                <option value="緊急">緊急</option>
+              <label for="emerge" class="form-label">
+                <h5>緊急程度</h5>
+              </label>
+              {{ form.emerge }}
+              <!-- <select class="form-control" id = "emerge"> -->
+                <!-- <option value="緊急">緊急</option>
                 <option value="重要">重要</option>
                 <option value="普通">普通</option>
-                <option value="可暫緩">可暫緩</option>
-              </select>
+                <option value="可暫緩">可暫緩</option> -->
+              <!-- </select> -->
             </div>
-
-            <button class="btn btn-primary" v-on:click="NewIncompleteEvent">建立事件</button>
+            <div class="card-footer">
+              <button type="submit" name="newevent" class="btn btn-fill btn-primary">建立事件</button>
+            </div>
 
           </div>
         </div>

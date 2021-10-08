@@ -1,5 +1,13 @@
 {
   "files": {
+    "apps/authentication/forms.py": [
+      {
+        "id": "bb6eb5d1-f48d-4b99-bf4d-5e2d8f4df33e",
+        "line": 8,
+        "version": 1,
+        "index": 155
+      }
+    ],
     "apps/authentication/views.py": [
       {
         "id": "6e813af3-ce14-4d0f-ab53-d92c82f29e45",
@@ -10,36 +18,90 @@
     ],
     "apps/home/forms.py": [
       {
-        "id": "3f5339d5-6af2-4871-80ae-6fbed71bc03d",
+        "id": "d38838c0-383b-4c8c-b8f7-124f4abbab1b",
         "line": 7,
-        "version": 116,
-        "index": 104
+        "version": 475,
+        "index": 100
       },
       {
-        "id": "570bb57e-4e94-4309-8f2e-a134c9b45996",
-        "line": 19,
-        "version": 136,
-        "index": 500
+        "id": "20afcffd-5582-42b0-8652-f7d9bf77fefd",
+        "line": 7,
+        "version": 475,
+        "index": 100
+      },
+      {
+        "id": "078c8d7e-f2d5-4418-ae33-a2fdad741a99",
+        "line": 7,
+        "version": 475,
+        "index": 100
+      },
+      {
+        "id": "cf470de8-2020-4892-87bc-acd108d28ada",
+        "line": 7,
+        "version": 475,
+        "index": 100
       }
     ],
     "apps/home/views.py": [
       {
+        "id": "7413fa62-d980-42f8-ba16-30a8df6118d7",
+        "line": 11,
+        "version": 621,
+        "index": 287
+      },
+      {
+        "id": "d9f79395-4473-4be3-8fc0-7e02eceb7a24",
+        "line": 11,
+        "version": 621,
+        "index": 287
+      },
+      {
+        "id": "126cfe32-94f9-4c47-a956-bdaf3adff1aa",
+        "line": 11,
+        "version": 621,
+        "index": 287
+      },
+      {
+        "id": "dd48db28-d9be-4eb7-8b80-1e7fc22e2089",
+        "line": 11,
+        "version": 621,
+        "index": 287
+      },
+      {
         "id": "c6342d6f-0601-4474-a999-c54f3237eecc",
-        "line": 22,
-        "version": 76,
-        "index": 580
+        "line": 11,
+        "version": 621,
+        "index": 287
       },
       {
         "id": "b0d52233-cbca-4dbc-8586-2d450e8ae644",
-        "line": 22,
-        "version": 76,
-        "index": 580
+        "line": 11,
+        "version": 621,
+        "index": 287
       },
       {
-        "id": "6f22dbbf-9319-4eb7-84c7-71d761b19a86",
-        "line": 23,
-        "version": 116,
-        "index": 621
+        "id": "38b3130a-be4c-4dcf-b876-0288403e00ab",
+        "line": 11,
+        "version": 621,
+        "index": 287
+      },
+      {
+        "id": "81d9b8be-254f-4846-a7e1-1523fa6c655b",
+        "line": 12,
+        "version": 682,
+        "index": 319
+      },
+      {
+        "id": "5b5cc1b0-446d-4502-94dc-7e96053b8289",
+        "line": 56,
+        "version": 621,
+        "index": 1583
+      },
+      {
+        "id": "0e96bc5a-c043-42b3-bec6-0d11033fec83",
+        "line": 56,
+        "version": 621,
+        "index": 1583
       }
     ],
     "apps/static/assets/css/black-dashboard.css": [
@@ -78,74 +140,144 @@
         "index": 1379
       }
     ],
+    "apps/templates/accounts/login.html": [
+      {
+        "id": "c921ac58-3744-4f72-952e-f36d3435613b",
+        "line": 56,
+        "version": 5,
+        "index": 1679
+      }
+    ],
     "apps/templates/accounts/register.html": [
       {
         "id": "d8f17e0f-b75e-4e47-b647-010a265f5eb1",
         "line": 16,
         "version": 2,
         "index": 366
+      },
+      {
+        "id": "b482f4d0-877f-4fac-a8d8-33ce60d3772c",
+        "line": 82,
+        "version": 2,
+        "index": 2764
       }
     ],
     "apps/templates/home/index.html": [
       {
         "id": "bbbff23e-1683-446c-aecc-ae393d0f8b0b",
         "line": 1,
-        "version": 816,
+        "version": 1115,
         "index": 33
       },
       {
         "id": "5ad5cbe1-1ddb-44dd-a07e-77d764b2f20a",
         "line": 1,
-        "version": 816,
+        "version": 1115,
         "index": 33
       },
       {
         "id": "84f0d766-0588-4d54-a277-c7ec4943e304",
         "line": 1,
-        "version": 816,
+        "version": 1115,
         "index": 33
       },
       {
         "id": "d753a393-1098-415e-b615-107b8b3bb047",
         "line": 1,
-        "version": 816,
+        "version": 1115,
         "index": 33
       },
       {
         "id": "47e135f1-66f9-4e53-b8c5-9aa68d10b64a",
         "line": 1,
-        "version": 816,
+        "version": 1115,
         "index": 33
       },
       {
         "id": "16758f1a-6e8e-401f-a3ad-261ea943dbef",
         "line": 1,
-        "version": 816,
+        "version": 1115,
         "index": 33
       },
       {
         "id": "e55780e5-c93e-4ba9-9973-9d3999b36c80",
         "line": 1,
-        "version": 816,
+        "version": 1115,
         "index": 33
       },
       {
         "id": "83cd6a80-257a-46db-bf20-41056ac62b30",
         "line": 1,
-        "version": 816,
+        "version": 1115,
         "index": 33
       },
       {
         "id": "44b0c943-0a0e-4b52-b745-51535a267a9f",
         "line": 1,
-        "version": 816,
+        "version": 1115,
         "index": 33
       },
       {
         "id": "46a4c193-f9dd-4641-94bc-e63defc9a2f0",
         "line": 1,
-        "version": 816,
+        "version": 1115,
         "index": 33
+      },
+      {
+        "id": "d043d5a6-56f0-486a-a2c3-aff067f89d97",
+        "line": 397,
+        "version": 1115,
+        "index": 16562
+      },
+      {
+        "id": "83cfd030-95f8-4518-88a5-f2b2293cff84",
+        "line": 397,
+        "version": 1115,
+        "index": 16562
+      },
+      {
+        "id": "721a18fa-2f4d-4133-b0c7-dea4229314c8",
+        "line": 397,
+        "version": 1115,
+        "index": 16562
+      },
+      {
+        "id": "4a8b28e7-f6fa-4e42-8de0-b6c727f8e033",
+        "line": 397,
+        "version": 1115,
+        "index": 16562
+      },
+      {
+        "id": "b2c34e75-c6cc-4d45-9ade-4149e0deb63a",
+        "line": 397,
+        "version": 1115,
+        "index": 16562
+      },
+      {
+        "id": "8fbac391-b4c8-4d7c-82ed-50de3203a277",
+        "line": 452,
+        "version": 1115,
+        "index": 18765
+      },
+      {
+        "id": "7cbfbacc-a376-425d-8771-6ca0a14dab6d",
+        "line": 470,
+        "version": 1115,
+        "index": 19179
+      },
+      {
+        "id": "c31ee079-8b0f-4f10-a45c-4fbcd7ad7315",
+        "line": 470,
+        "version": 1115,
+        "index": 19175
+      }
+    ],
+    "apps/templates/home/login.html": [
+      {
+        "id": "73677c47-e0b2-427a-bc01-d73b242f2bea",
+        "line": 48,
+        "version": 1,
+        "index": 1481
       }
     ],
     "apps/templates/includes/fixed-plugin.html": [

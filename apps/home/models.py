@@ -8,21 +8,27 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class EventList(models.Model):
-    username = models.ForeignKey(User, on_delete = models.CASCADE)
-    eventname = models.CharField(max_length=50)
-    eventdate = models.DateField(null=True)
-    predtime = models.FloatField(max_length=50)
+class eventList(models.Model):
+    userName = models.ForeignKey(User, on_delete = models.CASCADE)
+    eventName = models.CharField(max_length=50)
+    eventDate = models.DateField(null=True)
+    predTime = models.FloatField(max_length=50)
     emerge = models.CharField(max_length=50)
-    iscomplete = models.BooleanField(default=False)
-    costtime = models.FloatField(null=True, blank=True)
+    isComplete = models.BooleanField(default=False)
+    costTime = models.FloatField(null=True, blank=True)
+
+    # @classmethod
+    # def create(cls, username, eventname, eventdate, predtime, emerge):
+    #     event = cls(username=username, eventname=eventname, eventdate=eventdate, predtime=predtime, emerge=emerge)
+    #     # do something with the book
+    #     return event
 
     def __str__(self):
         """String for representing the Model object."""
-        return self.eventname
+        return self.eventName
 
 
-class Dailyfreetime(models.Model):
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
-    timedate = models.DateField(null=True)
-    freetime = models.FloatField(max_length=50)
+class dailyFreeTime(models.Model):
+    userName = models.ForeignKey(User, on_delete=models.CASCADE)
+    timeDate = models.DateField(null=True)
+    freeTime = models.FloatField(max_length=50)
