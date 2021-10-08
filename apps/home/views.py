@@ -10,25 +10,40 @@ from django.template import loader
 from django.urls import reverse
 from .forms import NewEventForm
 from django.shortcuts import render
-
+from .models import EventList
 
 
 @login_required(login_url="/login/")
 def index(request):
-    # context = {'segment': 'index'}
-
-    # html_template = loader.get_template('home/index.html')
-    # return HttpResponse(html_template.render(context, request))
+    print('get form')
+    
     if request.method == "POST":
-        form = NewEventForm(request.POST)
-        if form.is_valid():
-            form.save()
-            eventname = form.cleaned_data.get("eventname")
+      form = NewEventForm(request.POST)
+      if form.is_valid():
+          print('newenvent')
+          username = request.user
+          print(username)
 
-            # return redirect("/login/")
+          eventname = form.cleaned_data.get("eventname")
+          eventdate = form.cleaned_data.get("eventdate")
+          predtime = form.cleaned_data.get("predtime")
+          emerge = form.cleaned_data.get("emerge")
 
+
+          newevent = EventList.objects.create(
+            username = username,
+            eventname = eventname,
+            eventdate = eventdate,
+            predtime = predtime,
+            emerge = emerge,
+            iscomplete = False,
+            costtime = None
+          )
+
+          newevent.save()
+        
     else:
-        form = NewEventForm()
+      form = NewEventForm()
 
     return render(request, "home/index.html", {"form": form})
 
@@ -58,16 +73,27 @@ def pages(request):
         html_template = loader.get_template('home/page-500.html')
         return HttpResponse(html_template.render(context, request))
 
-# def NewEvent(request):
 
-#     if request.method == "POST":
-#         form = NewEventForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             eventname = form.cleaned_data.get("eventname")
+# def newevent(request):
+#   print('newenvent')
+#   form = NewEventForm()
 
-#             # return redirect("/login/")
+#   username = request.seession.get('username')
+#   eventname = form.cleaned_data.get("eventname")
+#   eventdate = form.cleaned_data.get("eventdate")
+#   predtime = form.cleaned_data.get("predtime")
+#   emerge = form.cleaned_data.get("emerge")
 
+#   newevent = EventList.object.create(
+#     username = username,
+#     eventname = eventname,
+#     eventdate = eventdate,
+#     predtime = predtime,
+#     emerge = emerge,
+#     iscomplete = False,
+#   )
 
+#   newevent.save()
 
-#     return render(request, "home/index.html", {"form": form, "eventname": eventname})
+#   return HttpResponse("success")
+#   # return render(request, "home/index.html", {"form": form})

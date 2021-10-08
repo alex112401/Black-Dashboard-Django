@@ -394,64 +394,65 @@
             <h4 class="card-title">New Event</h4>
           </div>
           <div class="card-body">
-            {% csrf_token %} 
+            <form role="form" method="post" action="">
 
-            <div class="TimeInput" id="TimeInput">
+              {% csrf_token %} 
+
+              <div class="TimeInput" id="TimeInput">
+                  <label for="eventname" class="form-label">
+                    <h5>可用時間</h5>
+                  </label>                                   
+                  <input class="form-control" type="number" id="emptytime" value=0 step="0.01" min="0">      
+                  <div>                                      
+                      <button class="btn btn-primary" id="timebtn" v-on:click="Setemptytime">設定可用時間</button>
+                  </div>
+              </div>        
+
+              <hr>
+
+              <div class="mt-4">        
                 <label for="eventname" class="form-label">
-                  <h5>可用時間</h5>
-                </label>                                   
-                <input class="form-control" type="number" id="emptytime" value=0 step="0.01" min="0">      
-                <div>                                      
-                    <button class="btn btn-primary" id="timebtn" v-on:click="Setemptytime">設定可用時間</button>
-                </div>
-            </div>        
+                  <h5>事件名稱</h5>
+                </label>
+                {{ form.eventname }}
+                <datalist id="datalistOptions">
+                  <option value="晨會">
+                  <option value="專案討論">
+                  <option value="回報">
+                  <option value="聚餐">
+                </datalist>
+              </div>
 
-            <hr>
+              <div class="mt-4">        
+                <label for="eventdate" class="form-label">
+                  <h5>開始時間</h5>
+                </label>
+                <!-- <input class="form-control" type="date" id="eventdate" value="2021-09-22"> -->
+                {{ form.eventdate}}
+              </div>  
 
-            <div class="mt-4">        
-              <label for="eventname" class="form-label">
-                <h5>事件名稱</h5>
-              </label>
-              {{ form.eventname }}
-              <datalist id="datalistOptions">
-                <option value="晨會">
-                <option value="專案討論">
-                <option value="回報">
-                <option value="聚餐">
-              </datalist>
-            </div>
-
-            <div class="mt-4">        
-              <label for="eventdate" class="form-label">
-                <h5>開始時間</h5>
-              </label>
-              <!-- <input class="form-control" type="date" id="eventdate" value="2021-09-22"> -->
-              {{ form.eventdate}}
-            </div>  
-
-            <div class="mt-4">    
-              <label for="eventdate" class="form-label">
-                <h5>預估時間(小時)</h5>
-              </label>       
-              {{ form.predtime }}
-              <!-- <input class="form-control" type="number" id = "eventcosttime" value=1 step="0.01" min="0"> -->
-            </div>
-
-            <div class="mt-4 mb-4">
-              <label for="eventdate" class="form-label">
-                <h5>緊急程度</h5>
+              <div class="mt-4">    
+                <label for="eventdate" class="form-label">
+                  <h5>預估時間(小時)</h5>
                 </label>       
-              {{ form.emerge }}
-              <!-- <select class="form-control" id = "emerge">
-                <option value="緊急">緊急</option>
-                <option value="重要">重要</option>
-                <option value="普通">普通</option>
-                <option value="可暫緩">可暫緩</option>
-              </select> -->
-            </div>
+                {{ form.predtime }}
+                <!-- <input class="form-control" type="number" id = "eventcosttime" value=1 step="0.01" min="0"> -->
+              </div>
 
-            <button class="btn btn-primary">建立事件</button>
-
+              <div class="mt-4 mb-4">
+                <label for="eventdate" class="form-label">
+                  <h5>緊急程度</h5>
+                  </label>       
+                {{ form.emerge }}
+                <!-- <select class="form-control" id = "emerge">
+                  <option value="緊急">緊急</option>
+                  <option value="重要">重要</option>
+                  <option value="普通">普通</option>
+                  <option value="可暫緩">可暫緩</option>
+                </select> -->
+              </div>
+              <button type="submit" name="newevent" class="btn btn-primary">建立事件</button>
+            </form>
           </div>
         </div>
       </div>

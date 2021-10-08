@@ -14,7 +14,7 @@ class NewEventForm(forms.Form):
           "placeholder": "EX: 會議 專案...",
           "class": "form-control",
           "list": "datalistOptions" ,
-          "id": "eventName",
+          "id": "eventname",
         }
       ))
       
@@ -23,7 +23,7 @@ class NewEventForm(forms.Form):
         attrs={
           "class": "form-control",
           "type": "date",
-          "id": "eventDate",
+          "id": "eventdate",
           "value": "2021-09-22"
         }
       ))
@@ -33,7 +33,7 @@ class NewEventForm(forms.Form):
         attrs={
           "class": "form-control",
           "type": "number",
-          "id": "predTime",
+          "id": "predtime",
           "value":1, 
           "step": "0.01", 
           "min":"0"
@@ -50,7 +50,8 @@ class NewEventForm(forms.Form):
     emerge = forms.ChoiceField(
       choices=CHOICES,
       widget=forms.Select(attrs={
-        "class": "form-control"}
+        "class": "form-control",
+        "id": "emerge"}
       ))
 
     class Meta:
