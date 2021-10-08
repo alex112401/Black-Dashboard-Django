@@ -4,8 +4,8 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from django.contrib import admin
-from .models import eventList, dailyFreeTime
+from .models import EventList, Dailyfreetime
 
 # Register your models here.
-admin.site.register(eventList)
-admin.site.register(dailyFreeTime)
+admin.site.register(EventList)
+admin.site.register(Dailyfreetime)

@@ -4,11 +4,11 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from django import forms
-from .models import eventList
+from .models import EventList
 
 
-class newEventForm(forms.Form):
-    eventName = forms.CharField(        
+class NewEventForm(forms.Form):
+    eventname = forms.CharField(        
       widget=forms.TextInput(
         attrs={
           "placeholder": "EX: 會議 專案...",
@@ -18,7 +18,7 @@ class newEventForm(forms.Form):
         }
       ))
       
-    eventDate = forms.DateField(      
+    eventdate = forms.DateField(      
       widget=forms.TextInput(
         attrs={
           "class": "form-control",
@@ -28,7 +28,7 @@ class newEventForm(forms.Form):
         }
       ))
 
-    predTime = forms.FloatField(
+    predtime = forms.FloatField(
       widget=forms.TextInput(
         attrs={
           "class": "form-control",
@@ -54,8 +54,7 @@ class newEventForm(forms.Form):
       ))
 
     class Meta:
-        model = eventList
-        fields = ('eventName', 'evenDate', 'predTime', 'emerge')
-        # fields = ('eventname')
+        model = EventList
+        fields = ('eventname', 'evendate', 'predtime', 'emerge')
 
 
