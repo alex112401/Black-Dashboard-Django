@@ -32,138 +32,132 @@
       {
         "id": "d38838c0-383b-4c8c-b8f7-124f4abbab1b",
         "line": 7,
-        "version": 609,
+        "version": 645,
         "index": 100
       },
       {
         "id": "20afcffd-5582-42b0-8652-f7d9bf77fefd",
         "line": 7,
-        "version": 609,
+        "version": 645,
         "index": 100
       },
       {
         "id": "078c8d7e-f2d5-4418-ae33-a2fdad741a99",
         "line": 7,
-        "version": 609,
+        "version": 645,
         "index": 100
       },
       {
         "id": "cf470de8-2020-4892-87bc-acd108d28ada",
         "line": 7,
-        "version": 609,
+        "version": 645,
         "index": 100
+      },
+      {
+        "id": "ecd6daff-c1d6-4668-8ca1-b2c698edfe95",
+        "line": 7,
+        "version": 645,
+        "index": 132
       }
     ],
     "apps/home/urls.py": [
       {
-        "id": "d82fca00-63fd-400a-b889-e1979ebb8191",
-        "line": 17,
-        "version": 99,
-        "index": 304
+        "id": "9562b3de-0665-4498-b203-cfde29eacb5d",
+        "line": 13,
+        "version": 120,
+        "index": 219
+      },
+      {
+        "id": "186d794e-6d89-42fc-9f29-62f2e84164ab",
+        "line": 16,
+        "version": 120,
+        "index": 305
       }
     ],
     "apps/home/views.py": [
       {
-        "id": "81d9b8be-254f-4846-a7e1-1523fa6c655b",
+        "id": "7413fa62-d980-42f8-ba16-30a8df6118d7",
         "line": 11,
-        "version": 839,
-        "index": 306
-      },
-      {
-        "id": "d9f79395-4473-4be3-8fc0-7e02eceb7a24",
-        "line": 11,
-        "version": 839,
-        "index": 287
-      },
-      {
-        "id": "126cfe32-94f9-4c47-a956-bdaf3adff1aa",
-        "line": 11,
-        "version": 839,
+        "version": 895,
         "index": 287
       },
       {
         "id": "dd48db28-d9be-4eb7-8b80-1e7fc22e2089",
         "line": 11,
-        "version": 839,
+        "version": 895,
         "index": 287
       },
       {
         "id": "c6342d6f-0601-4474-a999-c54f3237eecc",
         "line": 11,
-        "version": 839,
+        "version": 895,
         "index": 287
       },
       {
         "id": "b0d52233-cbca-4dbc-8586-2d450e8ae644",
         "line": 11,
-        "version": 839,
+        "version": 895,
         "index": 287
       },
       {
         "id": "38b3130a-be4c-4dcf-b876-0288403e00ab",
         "line": 11,
-        "version": 839,
+        "version": 895,
         "index": 287
       },
       {
         "id": "5b5cc1b0-446d-4502-94dc-7e96053b8289",
         "line": 11,
-        "version": 839,
+        "version": 895,
         "index": 306
       },
       {
         "id": "0e96bc5a-c043-42b3-bec6-0d11033fec83",
         "line": 11,
-        "version": 839,
+        "version": 895,
         "index": 306
       },
       {
-        "id": "7413fa62-d980-42f8-ba16-30a8df6118d7",
+        "id": "126cfe32-94f9-4c47-a956-bdaf3adff1aa",
         "line": 11,
-        "version": 839,
+        "version": 895,
         "index": 287
       },
       {
-        "id": "1a4100bb-4ee1-40bf-9f8e-e265a493dbed",
-        "line": 14,
-        "version": 1100,
-        "index": 385
-      },
-      {
-        "id": "66c34e2f-42ca-45c4-845f-40e0787a526d",
-        "line": 23,
-        "version": 977,
-        "index": 553
-      },
-      {
-        "id": "4b02a281-cb9c-4b09-b7d1-e75a76a65c48",
+        "id": "a23245fd-de0b-4eb7-866a-5f32971f2a6c",
         "line": 24,
-        "version": 933,
-        "index": 532
+        "version": 1178,
+        "index": 491
       },
       {
-        "id": "7e9c71c1-edde-4e7a-8627-9306598ab2fa",
-        "line": 25,
-        "version": 1098,
-        "index": 653
+        "id": "e240fefb-0c3b-48be-95c0-20a1644fc3f8",
+        "line": 50,
+        "version": 1192,
+        "index": 1423
       },
       {
-        "id": "64747d7c-39ad-4ea9-8afd-f523489a84da",
-        "line": 26,
-        "version": 1090,
-        "index": 701
+        "id": "98bc4c4b-6932-4bf7-aa6a-f72b79218464",
+        "line": 52,
+        "version": 1255,
+        "index": 1480
       },
       {
-        "id": "b8ca05a5-1606-46ab-8d73-784fa950b4f7",
-        "line": 53,
-        "version": 869,
-        "index": 1479
+        "id": "8b49bc13-3667-435e-8488-9aaa870b5f73",
+        "line": 57,
+        "version": 1260,
+        "index": 1606
       },
       {
         "id": "705dd973-993e-4d52-b737-f2574bc0bea7",
         "line": 74,
         "version": 980,
         "index": 2138
+      },
+      {
+        "id": "34013756-aa5a-4aad-9288-2f2b9e734886",
+        "line": 78,
+        "version": 1254,
+        "index": 2155
       }
     ],
     "apps/static/assets/css/black-dashboard.css": [
@@ -234,133 +228,145 @@
       {
         "id": "46a4c193-f9dd-4641-94bc-e63defc9a2f0",
         "line": 1,
-        "version": 1293,
+        "version": 1369,
         "index": 33
       },
       {
         "id": "5ad5cbe1-1ddb-44dd-a07e-77d764b2f20a",
         "line": 1,
-        "version": 1293,
+        "version": 1369,
         "index": 33
       },
       {
         "id": "84f0d766-0588-4d54-a277-c7ec4943e304",
         "line": 1,
-        "version": 1293,
+        "version": 1369,
         "index": 33
       },
       {
         "id": "d753a393-1098-415e-b615-107b8b3bb047",
         "line": 1,
-        "version": 1293,
+        "version": 1369,
         "index": 33
       },
       {
         "id": "47e135f1-66f9-4e53-b8c5-9aa68d10b64a",
         "line": 1,
-        "version": 1293,
+        "version": 1369,
         "index": 33
       },
       {
         "id": "16758f1a-6e8e-401f-a3ad-261ea943dbef",
         "line": 1,
-        "version": 1293,
+        "version": 1369,
         "index": 33
       },
       {
         "id": "e55780e5-c93e-4ba9-9973-9d3999b36c80",
         "line": 1,
-        "version": 1293,
+        "version": 1369,
         "index": 33
       },
       {
         "id": "83cd6a80-257a-46db-bf20-41056ac62b30",
         "line": 1,
-        "version": 1293,
+        "version": 1369,
         "index": 33
       },
       {
         "id": "44b0c943-0a0e-4b52-b745-51535a267a9f",
         "line": 1,
-        "version": 1293,
+        "version": 1369,
         "index": 33
       },
       {
         "id": "bbbff23e-1683-446c-aecc-ae393d0f8b0b",
         "line": 1,
-        "version": 1293,
+        "version": 1369,
         "index": 33
+      },
+      {
+        "id": "721a18fa-2f4d-4133-b0c7-dea4229314c8",
+        "line": 397,
+        "version": 1369,
+        "index": 16562
       },
       {
         "id": "83cfd030-95f8-4518-88a5-f2b2293cff84",
         "line": 397,
-        "version": 1293,
+        "version": 1369,
         "index": 16562
       },
       {
         "id": "8fbac391-b4c8-4d7c-82ed-50de3203a277",
         "line": 397,
-        "version": 1293,
+        "version": 1369,
         "index": 16563
-      },
-      {
-        "id": "721a18fa-2f4d-4133-b0c7-dea4229314c8",
-        "line": 397,
-        "version": 1293,
-        "index": 16562
       },
       {
         "id": "4a8b28e7-f6fa-4e42-8de0-b6c727f8e033",
         "line": 397,
-        "version": 1293,
+        "version": 1369,
         "index": 16562
       },
       {
         "id": "b2c34e75-c6cc-4d45-9ade-4149e0deb63a",
         "line": 397,
-        "version": 1293,
+        "version": 1369,
         "index": 16562
       },
       {
         "id": "d043d5a6-56f0-486a-a2c3-aff067f89d97",
         "line": 397,
-        "version": 1293,
+        "version": 1369,
         "index": 16562
       },
       {
         "id": "75431a89-25ba-4547-a906-39eeee37e265",
         "line": 397,
-        "version": 1293,
+        "version": 1369,
         "index": 16563
       },
       {
         "id": "0857001d-30ce-4bfa-87e3-970fd19dca91",
         "line": 397,
-        "version": 1293,
+        "version": 1369,
         "index": 16563
       },
       {
         "id": "ca93bc80-b2f0-4147-bc57-1b6ced15e3b8",
         "line": 397,
-        "version": 1293,
+        "version": 1369,
         "index": 16563
       },
       {
         "id": "7cbfbacc-a376-425d-8771-6ca0a14dab6d",
         "line": 397,
-        "version": 1293,
+        "version": 1369,
         "index": 16563
       },
       {
         "id": "c31ee079-8b0f-4f10-a45c-4fbcd7ad7315",
         "line": 397,
-        "version": 1293,
+        "version": 1369,
         "index": 16563
       },
       {
+        "id": "e0c92ec0-c9ee-4d7f-a880-f13f1b47020b",
+        "line": 402,
+        "version": 1369,
+        "index": 16722
+      },
+      {
+        "id": "b9533a54-7291-4cee-aa30-b459bcba9799",
+        "line": 446,
+        "version": 1422,
+        "index": 18428
+      },
+      {
         "id": "d51ef7d1-c711-4d71-b772-f7160c2d8627",
-        "line": 452,
-        "version": 1312,
+        "line": 455,
+        "version": 1369,
         "index": 18688
       }
     ],

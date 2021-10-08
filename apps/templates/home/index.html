@@ -399,12 +399,19 @@
               {% csrf_token %} 
 
               <div class="TimeInput" id="TimeInput">
-                  <label for="eventname" class="form-label">
+                  <label for="timedate" class="form-label">
+                    <h5>日期</h5>
+                  </label>                                   
+                  {{ form.timedate }}
+
+                  <label for="freetime" class="form-label">
                     <h5>可用時間</h5>
                   </label>                                   
-                  <input class="form-control" type="number" id="emptytime" value=0 step="0.01" min="0">      
+                  <!-- <input class="form-control" type="number" id="emptytime" value=0 step="0.01" min="0">       -->
+                  {{ form.freetime }}
+                  
                   <div>                                      
-                      <button class="btn btn-primary" id="timebtn" v-on:click="Setemptytime">設定可用時間</button>
+                      <button class="btn btn-primary" id="timebtn">設定可用時間</button>
                   </div>
               </div>        
 
@@ -436,7 +443,6 @@
                   <h5>預估時間(小時)</h5>
                 </label>       
                 {{ form.predtime }}
-                <!-- <input class="form-control" type="number" id = "eventcosttime" value=1 step="0.01" min="0"> -->
               </div>
 
               <div class="mt-4 mb-4">
@@ -444,14 +450,9 @@
                   <h5>緊急程度</h5>
                   </label>       
                 {{ form.emerge }}
-                <!-- <select class="form-control" id = "emerge">
-                  <option value="緊急">緊急</option>
-                  <option value="重要">重要</option>
-                  <option value="普通">普通</option>
-                  <option value="可暫緩">可暫緩</option>
-                </select> -->
+
               </div>
-              <button type="submit" name="newevent" class="btn btn-primary">建立事件</button>
+              <button type="submit" class="btn btn-primary" id="newevent">建立事件</button>
             </form>
           </div>
         </div>
@@ -467,8 +468,14 @@
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
-
+      $("#newevent").click(function() {
+        $.ajax({
+          url:"newevent/",
+          type:"POST"});
+      });
     });
+
+
   </script>
 
 {% endblock javascripts %}

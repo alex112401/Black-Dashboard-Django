@@ -11,39 +11,14 @@ from django.urls import reverse
 from .forms import NewEventForm
 from django.shortcuts import render
 from .models import EventList
+from django.views.decorators.csrf import csrf_exempt
 
 
 @login_required(login_url="/login/")
 def index(request):
-    print('get form')
-    
-    if request.method == "POST":
-      form = NewEventForm(request.POST)
-      if form.is_valid():
-          print('newenvent')
-          username = request.user
-          print(username)
+    print('index')
 
-          eventname = form.cleaned_data.get("eventname")
-          eventdate = form.cleaned_data.get("eventdate")
-          predtime = form.cleaned_data.get("predtime")
-          emerge = form.cleaned_data.get("emerge")
-
-
-          newevent = EventList.objects.create(
-            username = username,
-            eventname = eventname,
-            eventdate = eventdate,
-            predtime = predtime,
-            emerge = emerge,
-            iscomplete = False,
-            costtime = None
-          )
-
-          newevent.save()
-        
-    else:
-      form = NewEventForm()
+    form = NewEventForm()
 
     return render(request, "home/index.html", {"form": form})
 
@@ -73,27 +48,31 @@ def pages(request):
         html_template = loader.get_template('home/page-500.html')
         return HttpResponse(html_template.render(context, request))
 
+@login_required
+@csrf_exempt
+def newevent(request):
+    print('newevent')
+    print(request.method)
+    form = NewEventForm(request.POST)
+    print(form)
 
-# def newevent(request):
-#   print('newenvent')
-#   form = NewEventForm()
+    username = request.user
+    eventname = form.cleaned_data.get("eventname")
+    eventdate = form.cleaned_data.get("eventdate")
+    predtime = form.cleaned_data.get("predtime")
+    emerge = form.cleaned_data.get("emerge")
 
-#   username = request.seession.get('username')
-#   eventname = form.cleaned_data.get("eventname")
-#   eventdate = form.cleaned_data.get("eventdate")
-#   predtime = form.cleaned_data.get("predtime")
-#   emerge = form.cleaned_data.get("emerge")
+    newevent = EventList.objects.create(
+      username = username,
+      eventname = eventname,
+      eventdate = eventdate,
+      predtime = predtime,
+      emerge = emerge,
+      iscomplete = False,
+      costtime = None
+    )
 
-#   newevent = EventList.object.create(
-#     username = username,
-#     eventname = eventname,
-#     eventdate = eventdate,
-#     predtime = predtime,
-#     emerge = emerge,
-#     iscomplete = False,
-#   )
+    newevent.save()
 
-#   newevent.save()
-
-#   return HttpResponse("success")
-#   # return render(request, "home/index.html", {"form": form})
+    return render("home/index.html", {"form": form})
+    # return HttpResponse("success")
