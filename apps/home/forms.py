@@ -4,7 +4,6 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from django import forms
-from .models import EventList, Dailyfreetime
 
 
 class NewEventForm(forms.Form):

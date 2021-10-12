@@ -389,6 +389,8 @@
       </div>
 
       <div class="col-lg-2 col-md-12">
+
+
         <div class="card newevent">
           <div class="card-header ">
             <h4 class="card-title">New Event</h4>
@@ -397,6 +399,7 @@
             <form role="form" method="post" action="">
 
               {% csrf_token %} 
+
 
               <div class="TimeInput" id="TimeInput">
                   <label for="timedate" class="form-label">
@@ -469,9 +472,10 @@
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
       $("#newevent").click(function() {
+        console.log("newevent")
         $.ajax({
           url:"newevent/",
-          type:"POST"});
+          type:"POST",});
       });
     });
 

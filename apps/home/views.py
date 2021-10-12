@@ -14,6 +14,7 @@ from .models import EventList
 from django.views.decorators.csrf import csrf_exempt
 
 
+
 @login_required(login_url="/login/")
 def index(request):
     print('index')
@@ -55,24 +56,35 @@ def newevent(request):
     print(request.method)
     form = NewEventForm(request.POST)
     print(form)
+    if(request.method == "POST"):
+      if form.is_valid():
+        username = request.user
+        eventname = form.cleaned_data.get("eventname")
+        eventdate = form.cleaned_data.get("eventdate")
+        predtime = form.cleaned_data.get("predtime")
+        emerge = form.cleaned_data.get("emerge")
 
-    username = request.user
-    eventname = form.cleaned_data.get("eventname")
-    eventdate = form.cleaned_data.get("eventdate")
-    predtime = form.cleaned_data.get("predtime")
-    emerge = form.cleaned_data.get("emerge")
+        print("username"+username)
+        print("eventname"+eventname)
+        print("eventdate"+eventdate)
+        print("predtime"+predtime)
+        print("emerge"+emerge)
 
-    newevent = EventList.objects.create(
-      username = username,
-      eventname = eventname,
-      eventdate = eventdate,
-      predtime = predtime,
-      emerge = emerge,
-      iscomplete = False,
-      costtime = None
-    )
 
-    newevent.save()
+        newevent = EventList.objects.create(
+          username = username,
+          eventname = eventname,
+          eventdate = eventdate,
+          predtime = predtime,
+          emerge = emerge,
+          iscomplete = False,
+          costtime = None
+        )
 
-    return render("home/index.html", {"form": form})
-    # return HttpResponse("success")
+        newevent.save()
+        
+      else:
+        form = NewEventForm()
+        print("form is error")
+    return render(request, "home/index.html", {"form": form})
+    # return HttpResponse(form.errors.values())
