@@ -396,10 +396,8 @@
             <h4 class="card-title">New Event</h4>
           </div>
           <div class="card-body">
-            <form role="form" method="post" action="">
-
-              {% csrf_token %} 
-
+            {% csrf_token %} 
+            <form role="form" method="post" action="newevent/">             
 
               <div class="TimeInput" id="TimeInput">
                   <label for="timedate" class="form-label">
@@ -475,7 +473,8 @@
         console.log("newevent")
         $.ajax({
           url:"newevent/",
-          type:"POST",});
+          type:"POST",              
+          header:{'X-CSRFToken': Vue.$cookies.get("csrftoken"),'Content-Type':'application/x-www-form-urlencoded'},});
       });
     });
 

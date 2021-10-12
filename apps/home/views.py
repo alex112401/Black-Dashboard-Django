@@ -64,11 +64,11 @@ def newevent(request):
         predtime = form.cleaned_data.get("predtime")
         emerge = form.cleaned_data.get("emerge")
 
-        print("username"+username)
-        print("eventname"+eventname)
-        print("eventdate"+eventdate)
-        print("predtime"+predtime)
-        print("emerge"+emerge)
+        print("username ",username)
+        print("eventname ",eventname)
+        print("eventdate ",eventdate)
+        print("predtime ",predtime)
+        print("emerge ",emerge)
 
 
         newevent = EventList.objects.create(
@@ -85,6 +85,7 @@ def newevent(request):
         
       else:
         form = NewEventForm()
+        print(form.errors)
         print("form is error")
     return render(request, "home/index.html", {"form": form})
     # return HttpResponse(form.errors.values())
