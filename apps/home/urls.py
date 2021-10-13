@@ -12,6 +12,8 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('newevent/', views.newevent, name='newevent'),
     path('newfreetime/', views.newfreetime, name='newfreetime'),
+    path('deleteevent/<int:pk>', views.deleteevent),
+    path('completeevent/<int:pk>', views.completeevent),
 
 
     # Matches any html file

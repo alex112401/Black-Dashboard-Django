@@ -71,32 +71,48 @@
                 <h2 class="card-title">未完成事項</h2>
               </div>
               <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table tablesorter">
-                        <thead class="text-primary">
-                            <tr>
-                                <th scope="col"> 事件名稱 </th>
-                                <th scope="col"> 事件日期 </th>
-                                <th scope="col"> 預估時間</th>
-                                <th scope="col"> 緊急程度 </th>
-                                <th scope="col"> 完成 </th>
-                                <th scope="col"> 刪除 </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for event in eventlist %}
-                            <tr scope="row">
-                                <td text-align: center>{{ event.eventname }}</td>
-                                <td>{{ event.eventdate }} </td>
-                                <td>{{ event.predtime }} 小時</td>
-                                <td>{{ event.emerge }} </td>
-                                <td><button class="btn btn-primary">完成</button></td>
-                                <td><button class="btn btn-primary">刪除</button></td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
+                {% csrf_token %}
+                  <div class="table-responsive">
+                    <table class="table tablesorter">
+                          <thead class="text-primary">
+                              <tr>
+                                  <th scope="col"> 事件名稱 </th>
+                                  <th scope="col"> 事件日期 </th>
+                                  <th scope="col"> 預估時間</th>
+                                  <th scope="col"> 緊急程度 </th>
+                                  <th scope="col"> 完成 </th>
+                                  <th scope="col"> 刪除 </th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              {% for event in eventlist %}
+                                <tr scope="row">
+                                    <td text-align: center>{{ event.eventname }}</td>
+                                    <td>{{ event.eventdate }} </td>
+                                    <td>{{ event.predtime }} 小時</td>
+                                    <td>{{ event.emerge }} </td>
+                                    
+                                    <form role="form" method="post" action="completeevent/{{ event.id }}">                                        
+                                      <td>時間
+                                        <div class="row">
+                                          <div class="col">
+                                            <input class="form-control" type="number" value="1" step="0.1" min="0" name="costtime">
+                                          </div>
+                                          <div class="col">
+                                            <button class="comevent btn btn-primary" >完成</button>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </form>
+
+                                    <form role="form" method="post" action="deleteevent/{{ event.id }}" >      
+                                      <td><button class="delevent btn btn-primary">刪除</button></td>
+                                    </form>
+                                </tr>
+                              {% endfor %}
+                          </tbody>
                     </table>
-                </div>
+                  </div>
               </div>
             </div>
           </div>
@@ -177,7 +193,7 @@
             <h4 class="card-title">每日可用時間/建立事件</h4>
           </div>
           <div class="card-body">
-            {% csrf_token %}
+            <!-- {% csrf_token %} -->
             <form role="form" method="post" action="newfreetime/">             
 
               <div class="TimeInput" id="TimeInput">
@@ -185,14 +201,11 @@
                     <h5>日期</h5>
                   </label>                                   
                   {{ timeForm.timedate }}
-
                   <label for="freetime" class="form-label">
                     <h5>可用時間</h5>
                   </label>                                   
-
                   {{ timeForm.freetime }}
-                  
-                  <div>                                      
+                   <div>                                      
                       <button class="btn btn-primary" id="newfreetime">設定可用時間</button>
                   </div>
               </div>        
@@ -202,8 +215,6 @@
             
             
             <form role="form" method="post" action="newevent/">             
-
-
               <div class="mt-4">        
                 <label for="eventname" class="form-label">
                   <h5>事件名稱</h5>
@@ -253,7 +264,7 @@
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
-      demo.initDashboardPageCharts();
+      // demo.initDashboardPageCharts();
       $("#newevent").click(function() {
         console.log("newevent")
         $.ajax({
@@ -261,11 +272,28 @@
           type:"POST",              
           header:{'X-CSRFToken': Vue.$cookies.get("csrftoken"),'Content-Type':'application/x-www-form-urlencoded'},});
       });
+
       $("#newfreetime").click(function() {
         console.log("newfreetime")
         $.ajax({
           url:"newfreetime/",
           type:"POST",              
+          header:{'X-CSRFToken': Vue.$cookies.get("csrftoken"),'Content-Type':'application/x-www-form-urlencoded'},});
+      });
+
+      $(".delevent").click(function(){
+        console.log("url:" + "/deleteevent/"+this.id)
+        $.ajax({
+          url:"deleteevent/" + this.id,
+          type:"POST",
+          header:{'X-CSRFToken': Vue.$cookies.get("csrftoken"),'Content-Type':'application/x-www-form-urlencoded'},});
+      });
+
+      $(".comevent").click(function(){
+        console.log("url:" + "/comevent/"+this.id)
+        $.ajax({
+          url:"comevent/" + this.id,
+          type:"POST",
           header:{'X-CSRFToken': Vue.$cookies.get("csrftoken"),'Content-Type':'application/x-www-form-urlencoded'},});
       });
     });

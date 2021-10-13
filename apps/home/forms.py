@@ -37,7 +37,7 @@ class NewEventForm(forms.Form):
           "type": "number",
           "id": "predtime",
           "value":1, 
-          "step": "0.01", 
+          "step": "0.1", 
           "min":"0"
         }
       ))
@@ -78,7 +78,7 @@ class NewDailyTimeForm(forms.Form):
           "type": "number",
           "id": "freetime",
           "value":1, 
-          "step": "0.01", 
+          "step": "0.1", 
           "min":"0"
         }
       ))

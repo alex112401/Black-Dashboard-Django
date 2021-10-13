@@ -15,36 +15,20 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 
+
 @login_required(login_url="/login/")
 def index(request):
-    print('index')
 
     eventForm = NewEventForm()
     timeForm = NewDailyTimeForm()
     eventList = EventList.objects.filter(iscomplete = False, username = request.user)
     comeventList = EventList.objects.filter(iscomplete = True, username = request.user)
-
-    namelist  = []
-    datelsit = []
-    predtimelist = []
-    emergelist = []
-
-    for everyevent in eventList:
-      namelist.append(everyevent.eventname)
-      datelsit.append(everyevent.eventdate)
-      predtimelist.append(everyevent.predtime)
-      emergelist.append(everyevent.emerge)
-      
     dailyfreetime = Dailyfreetime.objects.filter(username = request.user)
 
     return render(request, "home/index.html", {"eventForm": eventForm,
                                                 "timeForm": timeForm,
                                                 "eventlist":eventList,
                                                 "comeventlist":comeventList,
-                                                "namelist":namelist,
-                                                "datelsit":datelsit,
-                                                "predtimelist":predtimelist,
-                                                "emergelist":emergelist,
                                                 "dailyfreetime":dailyfreetime})
 
 
@@ -76,9 +60,6 @@ def pages(request):
 @login_required
 @csrf_exempt
 def newevent(request):
-    print('newevent')
-    print(request.method)
-
     if(request.method == "POST"):
       eventForm = NewEventForm(request.POST)
       if eventForm.is_valid():
@@ -87,13 +68,6 @@ def newevent(request):
         eventdate = eventForm.cleaned_data.get("eventdate")
         predtime = eventForm.cleaned_data.get("predtime")
         emerge = eventForm.cleaned_data.get("emerge")
-
-        print("username ",username)
-        print("eventname ",eventname)
-        print("eventdate ",eventdate)
-        print("predtime ",predtime)
-        print("emerge ",emerge)
-
 
         newevent = EventList.objects.create(
           username = username,
@@ -104,26 +78,17 @@ def newevent(request):
           iscomplete = False,
           costtime = None
         )
-
         newevent.save()
         
       else:
         eventForm = NewEventForm()
-        print(eventForm.errors)
-        print("eventForm is error")
     else:
-      print("Not Post")
       eventForm = NewEventForm()
-
-    print("back")
     return redirect('/')
 
 @login_required
 @csrf_exempt
 def newfreetime(request):
-    print('newfreetime')
-    print(request.method)
-
     if(request.method == "POST"):
       timeForm = NewDailyTimeForm(request.POST)
       if timeForm.is_valid():
@@ -131,28 +96,35 @@ def newfreetime(request):
         timedate = timeForm.cleaned_data.get("timedate")
         freetime = timeForm.cleaned_data.get("freetime")
 
-
-        print("username ",username)
-        print("timedate ",timedate)
-        print("freetime ",freetime)
-
-
-
         newfreetime = Dailyfreetime.objects.create(
           username = username,
           timedate = timedate,
           freetime = freetime,
         )
-
         newfreetime.save()
         
       else:
         timeForm = NewDailyTimeForm()
-        print(timeForm.errors)
-        print("timeForm is error")
     else:
-      print("Not Post")
       timeForm = NewDailyTimeForm()
+    return redirect('/')
 
-    print("back")
+@login_required
+@csrf_exempt
+def deleteevent(request, pk):
+    delevent = EventList.objects.get(pk=pk)
+    delevent.delete()
+    return redirect('/')
+
+@login_required
+@csrf_exempt
+def completeevent(request, pk):
+
+    comevent = EventList.objects.get(pk=pk)
+    costtime = request.POST.get('costtime')
+    if(costtime!=0):
+      comevent.iscomplete = True
+      comevent.costtime = costtime
+      comevent.save()
+
     return redirect('/')
