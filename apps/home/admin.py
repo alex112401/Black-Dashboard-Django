@@ -7,5 +7,16 @@ from django.contrib import admin
 from .models import EventList, Dailyfreetime
 
 # Register your models here.
-admin.site.register(EventList)
-admin.site.register(Dailyfreetime)
+
+class EventListAdmin(admin.ModelAdmin):
+  list_display = ('username', 'eventname', 'eventdate', 'predtime', 'emerge', 'iscomplete', 'costtime')
+
+  fields = ['username', 'eventname', 'eventdate', 'predtime', 'emerge', 'iscomplete', 'costtime']
+
+class DailyfreetimeAdmin(admin.ModelAdmin):
+  list_display = ('username', 'timedate', 'freetime')
+
+  fields = ['username', 'timedate', 'freetime']
+
+admin.site.register(EventList, EventListAdmin)
+admin.site.register(Dailyfreetime, DailyfreetimeAdmin)

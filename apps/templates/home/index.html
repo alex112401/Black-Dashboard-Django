@@ -16,28 +16,35 @@
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
-                    <h5 class="card-category">Total Shipments</h5>
-                    <h2 class="card-title">Performance</h2>
+                    <h5 class="card-category">行程表分析</h5>
+                    <h2 class="card-title">績效統計</h2>
                   </div>
                   <div class="col-sm-6">
                     <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                       <label class="btn btn-sm btn-primary btn-simple active" id="0">
                         <input type="radio" name="options" checked>
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Accounts</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">每日完成率</span>
                         <span class="d-block d-sm-none">
                           <i class="tim-icons icon-single-02"></i>
                         </span>
                       </label>
                       <label class="btn btn-sm btn-primary btn-simple" id="1">
                         <input type="radio" class="d-none d-sm-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Purchases</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">每日效率</span>
                         <span class="d-block d-sm-none">
                           <i class="tim-icons icon-gift-2"></i>
                         </span>
                       </label>
                       <label class="btn btn-sm btn-primary btn-simple" id="2">
                         <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Sessions</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">緊急程度分布</span>
+                        <span class="d-block d-sm-none">
+                          <i class="tim-icons icon-tap-02"></i>
+                        </span>
+                      </label>
+                      <label class="btn btn-sm btn-primary btn-simple" id="3">
+                        <input type="radio" class="d-none" name="options">
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">緊急程度效率分布</span>
                         <span class="d-block d-sm-none">
                           <i class="tim-icons icon-tap-02"></i>
                         </span>
@@ -393,36 +400,41 @@
 
         <div class="card newevent">
           <div class="card-header ">
-            <h4 class="card-title">New Event</h4>
+            <h4 class="card-title">每日可用時間/建立事件</h4>
           </div>
           <div class="card-body">
-            {% csrf_token %} 
-            <form role="form" method="post" action="newevent/">             
+            {% csrf_token %}
+            <form role="form" method="post" action="newfreetime/">             
 
               <div class="TimeInput" id="TimeInput">
                   <label for="timedate" class="form-label">
                     <h5>日期</h5>
                   </label>                                   
-                  {{ form.timedate }}
+                  {{ timeForm.timedate }}
 
                   <label for="freetime" class="form-label">
                     <h5>可用時間</h5>
                   </label>                                   
-                  <!-- <input class="form-control" type="number" id="emptytime" value=0 step="0.01" min="0">       -->
-                  {{ form.freetime }}
+
+                  {{ timeForm.freetime }}
                   
                   <div>                                      
-                      <button class="btn btn-primary" id="timebtn">設定可用時間</button>
+                      <button class="btn btn-primary" id="newfreetime">設定可用時間</button>
                   </div>
               </div>        
+            </form>
 
-              <hr>
+            <hr>
+            
+            
+            <form role="form" method="post" action="newevent/">             
+
 
               <div class="mt-4">        
                 <label for="eventname" class="form-label">
                   <h5>事件名稱</h5>
                 </label>
-                {{ form.eventname }}
+                {{ eventForm.eventname }}
                 <datalist id="datalistOptions">
                   <option value="晨會">
                   <option value="專案討論">
@@ -436,21 +448,21 @@
                   <h5>開始時間</h5>
                 </label>
                 <!-- <input class="form-control" type="date" id="eventdate" value="2021-09-22"> -->
-                {{ form.eventdate}}
+                {{ eventForm.eventdate}}
               </div>  
 
               <div class="mt-4">    
                 <label for="eventdate" class="form-label">
                   <h5>預估時間(小時)</h5>
                 </label>       
-                {{ form.predtime }}
+                {{ eventForm.predtime }}
               </div>
 
               <div class="mt-4 mb-4">
                 <label for="eventdate" class="form-label">
                   <h5>緊急程度</h5>
                   </label>       
-                {{ form.emerge }}
+                {{ eventForm.emerge }}
 
               </div>
               <button type="submit" class="btn btn-primary" id="newevent">建立事件</button>
@@ -473,6 +485,13 @@
         console.log("newevent")
         $.ajax({
           url:"newevent/",
+          type:"POST",              
+          header:{'X-CSRFToken': Vue.$cookies.get("csrftoken"),'Content-Type':'application/x-www-form-urlencoded'},});
+      });
+      $("#newfreetime").click(function() {
+        console.log("newfreetime")
+        $.ajax({
+          url:"newfreetime/",
           type:"POST",              
           header:{'X-CSRFToken': Vue.$cookies.get("csrftoken"),'Content-Type':'application/x-www-form-urlencoded'},});
       });

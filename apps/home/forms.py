@@ -53,6 +53,8 @@ class NewEventForm(forms.Form):
         "id": "emerge"}
       ))
 
+      
+class NewDailyTimeForm(forms.Form):
     timedate = forms.DateField(      
       widget=forms.TextInput(
         attrs={

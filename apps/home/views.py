@@ -8,9 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
-from .forms import NewEventForm
-from django.shortcuts import render
-from .models import EventList
+from .forms import NewEventForm, NewDailyTimeForm
+from django.shortcuts import render, redirect
+from .models import EventList, Dailyfreetime
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -19,9 +19,11 @@ from django.views.decorators.csrf import csrf_exempt
 def index(request):
     print('index')
 
-    form = NewEventForm()
+    eventForm = NewEventForm()
+    timeForm = NewDailyTimeForm()
 
-    return render(request, "home/index.html", {"form": form})
+    return render(request, "home/index.html", {"eventForm": eventForm,
+                                                "timeForm": timeForm})
 
 
 @login_required(login_url="/login/")
@@ -54,15 +56,15 @@ def pages(request):
 def newevent(request):
     print('newevent')
     print(request.method)
-    form = NewEventForm(request.POST)
-    print(form)
+
     if(request.method == "POST"):
-      if form.is_valid():
+      eventForm = NewEventForm(request.POST)
+      if eventForm.is_valid():
         username = request.user
-        eventname = form.cleaned_data.get("eventname")
-        eventdate = form.cleaned_data.get("eventdate")
-        predtime = form.cleaned_data.get("predtime")
-        emerge = form.cleaned_data.get("emerge")
+        eventname = eventForm.cleaned_data.get("eventname")
+        eventdate = eventForm.cleaned_data.get("eventdate")
+        predtime = eventForm.cleaned_data.get("predtime")
+        emerge = eventForm.cleaned_data.get("emerge")
 
         print("username ",username)
         print("eventname ",eventname)
@@ -84,8 +86,51 @@ def newevent(request):
         newevent.save()
         
       else:
-        form = NewEventForm()
-        print(form.errors)
-        print("form is error")
-    return render(request, "home/index.html", {"form": form})
-    # return HttpResponse(form.errors.values())
+        eventForm = NewEventForm()
+        print(eventForm.errors)
+        print("eventForm is error")
+    else:
+      print("Not Post")
+      eventForm = NewEventForm()
+
+    print("back")
+    return redirect('/')
+
+@login_required
+@csrf_exempt
+def newfreetime(request):
+    print('newfreetime')
+    print(request.method)
+
+    if(request.method == "POST"):
+      timeForm = NewDailyTimeForm(request.POST)
+      if timeForm.is_valid():
+        username = request.user
+        timedate = timeForm.cleaned_data.get("timedate")
+        freetime = timeForm.cleaned_data.get("freetime")
+
+
+        print("username ",username)
+        print("timedate ",timedate)
+        print("freetime ",freetime)
+
+
+
+        newfreetime = Dailyfreetime.objects.create(
+          username = username,
+          timedate = timedate,
+          freetime = freetime,
+        )
+
+        newfreetime.save()
+        
+      else:
+        timeForm = NewDailyTimeForm()
+        print(timeForm.errors)
+        print("timeForm is error")
+    else:
+      print("Not Post")
+      timeForm = NewDailyTimeForm()
+
+    print("back")
+    return redirect('/')
