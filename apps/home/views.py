@@ -21,9 +21,31 @@ def index(request):
 
     eventForm = NewEventForm()
     timeForm = NewDailyTimeForm()
+    eventList = EventList.objects.filter(iscomplete = False, username = request.user)
+    comeventList = EventList.objects.filter(iscomplete = True, username = request.user)
+
+    namelist  = []
+    datelsit = []
+    predtimelist = []
+    emergelist = []
+
+    for everyevent in eventList:
+      namelist.append(everyevent.eventname)
+      datelsit.append(everyevent.eventdate)
+      predtimelist.append(everyevent.predtime)
+      emergelist.append(everyevent.emerge)
+      
+    dailyfreetime = Dailyfreetime.objects.filter(username = request.user)
 
     return render(request, "home/index.html", {"eventForm": eventForm,
-                                                "timeForm": timeForm})
+                                                "timeForm": timeForm,
+                                                "eventlist":eventList,
+                                                "comeventlist":comeventList,
+                                                "namelist":namelist,
+                                                "datelsit":datelsit,
+                                                "predtimelist":predtimelist,
+                                                "emergelist":emergelist,
+                                                "dailyfreetime":dailyfreetime})
 
 
 @login_required(login_url="/login/")
