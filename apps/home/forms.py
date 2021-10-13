@@ -4,9 +4,12 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from django import forms
+from datetime import date
 
 
 class NewEventForm(forms.Form):
+    today = date.today()
+
     eventname = forms.CharField(        
       widget=forms.TextInput(
         attrs={
@@ -23,7 +26,7 @@ class NewEventForm(forms.Form):
           "class": "form-control",
           "type": "date",
           "id": "eventdate",
-          "value": "2021-09-22"
+          "value": today
         }
       ))
 
@@ -55,13 +58,16 @@ class NewEventForm(forms.Form):
 
       
 class NewDailyTimeForm(forms.Form):
+    today = date.today()
+
+
     timedate = forms.DateField(      
       widget=forms.TextInput(
         attrs={
           "class": "form-control",
           "type": "date",
           "id": "timedate",
-          "value": "2021-09-22"
+          "value": today
         }
       ))
     
