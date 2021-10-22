@@ -6,10 +6,132 @@
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
+{% load static %}
     <div class="row">
 
       <div class="col-lg-10 col-md-12">
-      <!-- 上排圖表 -->
+        <!-- 上排圖表 -->
+        <div class="row">
+          <div class="col">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">事件統計</h5>
+                <h2 class="card-title">未完成事項</h2>
+              </div>
+              <div class="card-body">
+                {% csrf_token %}
+                  <div class="table-responsive">
+                    <table class="table tablesorter">
+                          <thead class="text-primary">
+                              <tr>
+                                  <th class="text-center"> 事件名稱 </th>
+                                  <th class="text-center"> 事件日期 </th>
+                                  <th class="text-center"> 預估時間 </th>
+                                  <th class="text-center"> 緊急程度 </th>
+                                  <th class="text-center" style="width: 20%"> 完成 </th>
+                                  <th class="text-center"> 刪除 </th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              {% for event in eventlist %}
+                                <tr scope="row">
+                                    <td class="text-center">{{ event.eventname }}</td>
+                                    <td class="text-center">{{ event.eventdate }} </td>
+                                    <td class="text-center">{{ event.predtime }} 小時</td>
+                                    <td class="text-center">{{ event.emerge }} </td>
+                                    
+                                    <form role="form" method="post" action="completeevent/{{ event.id }}">                                        
+                                      <td class="text-center">
+                                        <div class="row">
+                                          <div class="col">時間
+                                            <input class="form-control" type="number" value="1" step="0.1" min="0" name="costtime">
+                                          </div>
+                                          <div class="col">
+                                            <button class="comevent btn btn-primary" style="margin-top: 1.6vh">完成</button>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </form>
+
+                                    <form role="form" method="post" action="deleteevent/{{ event.id }}" >      
+                                      <td class="text-center"><button class="delevent btn btn-primary">刪除</button></td>
+                                    </form>
+                                </tr>
+                              {% endfor %}
+                          </tbody>
+                    </table>
+                  </div>
+              </div>
+
+              <hr>
+
+              <div class="card-header">
+                <h5 class="card-category">事件統計</h5>
+                <h2 class="card-title">已完成事項</h2>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table tablesorter">
+                        <thead class="text-primary">
+                            <tr>
+                                <th class="text-center"> 事件名稱 </th>
+                                <th class="text-center"> 事件日期 </th>
+                                <th class="text-center"> 預估時間</th>
+                                <th class="text-center"> 完成時間 </th>
+                                <th class="text-center"> 緊急程度 </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for comevent in comeventlist %}
+                            <tr scope="row">
+                                <td class="text-center">{{ comevent.eventname }}</td>
+                                <td class="text-center">{{ comevent.eventdate }} </td>
+                                <td class="text-center">{{ comevent.predtime }} 小時</td>
+                                <td class="text-center">{{ comevent.costtime }} 小時</td>
+                                <td class="text-center">{{ comevent.emerge }} </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">時間統計</h5>
+                <h2 class="card-title">每日可用時間</h2>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table tablesorter">
+                        <thead class="text-primary">
+                            <tr>
+                                <th class="text-center"> 事件日期 </th>
+                                <th class="text-center"> 可用時間</th>
+                                <th class="text-center"> 已用時間</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for time in dailyfreetime %}
+                            <tr scope="row">
+                                <td class="text-center">{{ time.timedate }}</td>
+                                <td class="text-center">{{ time.freetime }} 小時</td>
+                                <td class="text-center">{{ time.busytime }} 小時</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 中間圖表 -->
         <div class="row">
           <div class="col-12">
             <div class="card card-chart">
@@ -55,128 +177,12 @@
               </div>
               <div class="card-body">
                 <div class="chart-area">
-                  <canvas id="chartBig1"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 中間圖表 -->
-        <div class="row">
-          <div class="col-lg-5">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">事件統計</h5>
-                <h2 class="card-title">未完成事項</h2>
-              </div>
-              <div class="card-body">
-                {% csrf_token %}
-                  <div class="table-responsive">
-                    <table class="table tablesorter">
-                          <thead class="text-primary">
-                              <tr>
-                                  <th scope="col"> 事件名稱 </th>
-                                  <th scope="col"> 事件日期 </th>
-                                  <th scope="col"> 預估時間</th>
-                                  <th scope="col"> 緊急程度 </th>
-                                  <th scope="col"> 完成 </th>
-                                  <th scope="col"> 刪除 </th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              {% for event in eventlist %}
-                                <tr scope="row">
-                                    <td text-align: center>{{ event.eventname }}</td>
-                                    <td>{{ event.eventdate }} </td>
-                                    <td>{{ event.predtime }} 小時</td>
-                                    <td>{{ event.emerge }} </td>
-                                    
-                                    <form role="form" method="post" action="completeevent/{{ event.id }}">                                        
-                                      <td>時間
-                                        <div class="row">
-                                          <div class="col">
-                                            <input class="form-control" type="number" value="1" step="0.1" min="0" name="costtime">
-                                          </div>
-                                          <div class="col">
-                                            <button class="comevent btn btn-primary" >完成</button>
-                                          </div>
-                                        </div>
-                                      </td>
-                                    </form>
-
-                                    <form role="form" method="post" action="deleteevent/{{ event.id }}" >      
-                                      <td><button class="delevent btn btn-primary">刪除</button></td>
-                                    </form>
-                                </tr>
-                              {% endfor %}
-                          </tbody>
-                    </table>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-2">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">時間統計</h5>
-                <h2 class="card-title">每日可用時間</h2>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table tablesorter">
-                        <thead class="text-primary">
-                            <tr>
-                                <th scope="col"> 事件日期 </th>
-                                <th scope="col"> 時間</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for time in dailyfreetime %}
-                            <tr scope="row">
-                                <td text-align: center>{{ time.timedate }}</td>
-                                <td>{{ time.freetime }} 小時</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-5">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">事件統計</h5>
-                <h2 class="card-title">已完成事項</h2>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table tablesorter">
-                        <thead class="text-primary">
-                            <tr>
-                                <th scope="col"> 事件名稱 </th>
-                                <th scope="col"> 事件日期 </th>
-                                <th scope="col"> 預估時間</th>
-                                <th scope="col"> 完成時間 </th>
-                                <th scope="col"> 緊急程度 </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for comevent in comeventlist %}
-                            <tr scope="row">
-                                <td text-align: center>{{ comevent.eventname }}</td>
-                                <td>{{ comevent.eventdate }} </td>
-                                <td>{{ comevent.predtime }} 小時</td>
-                                <td>{{ comevent.costtime }} 小時</td>
-                                <td>{{ comevent.emerge }} </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                  </table>
-
+                  <!-- {{ testword }} -->
+                  {% verbatim %}
+                  <canvas id="chartBig1">
+                    <getchart :eventlist="eventlist" :comeventlist="comeventlist"></getchart>
+                  </canvas>
+                  {% endverbatim %}
                 </div>
               </div>
             </div>
@@ -186,14 +192,11 @@
       </div>
 
       <div class="col-lg-2 col-md-12">
-
-
         <div class="card newevent">
           <div class="card-header ">
             <h4 class="card-title">每日可用時間/建立事件</h4>
           </div>
           <div class="card-body">
-            <!-- {% csrf_token %} -->
             <form role="form" method="post" action="newfreetime/">             
 
               <div class="TimeInput" id="TimeInput">
@@ -260,48 +263,12 @@
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
+<script>
+  var eventlist = "{{ eventlist|safe }}";
+  var comeventlist = "{{ comeventlist|safe }}"
+</script>
+<script src="/static/assets/js/vue.js"></script>
+<script src="/static/assets/js/index.js"></script>
 
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      // demo.initDashboardPageCharts();
-      $("#newevent").click(function() {
-        console.log("newevent")
-        $.ajax({
-          url:"newevent/",
-          type:"POST",              
-          header:{'X-CSRFToken': Vue.$cookies.get("csrftoken"),'Content-Type':'application/x-www-form-urlencoded'},});
-      });
-
-      $("#newfreetime").click(function() {
-        console.log("newfreetime")
-        $.ajax({
-          url:"newfreetime/",
-          type:"POST",              
-          header:{'X-CSRFToken': Vue.$cookies.get("csrftoken"),'Content-Type':'application/x-www-form-urlencoded'},});
-      });
-
-      $(".delevent").click(function(){
-        console.log("url:" + "/deleteevent/"+this.id)
-        $.ajax({
-          url:"deleteevent/" + this.id,
-          type:"POST",
-          header:{'X-CSRFToken': Vue.$cookies.get("csrftoken"),'Content-Type':'application/x-www-form-urlencoded'},});
-      });
-
-      $(".comevent").click(function(){
-        console.log("url:" + "/comevent/"+this.id)
-        $.ajax({
-          url:"comevent/" + this.id,
-          type:"POST",
-          header:{'X-CSRFToken': Vue.$cookies.get("csrftoken"),'Content-Type':'application/x-www-form-urlencoded'},});
-      });
-    });
-
-    window.onload = function(){
-      var ctx = document.getElementById('chartBig1')
-    }
-
-  </script>
 
 {% endblock javascripts %}

@@ -14,9 +14,9 @@ class EventListAdmin(admin.ModelAdmin):
   fields = ['username', 'eventname', 'eventdate', 'predtime', 'emerge', 'iscomplete', 'costtime']
 
 class DailyfreetimeAdmin(admin.ModelAdmin):
-  list_display = ('username', 'timedate', 'freetime')
+  list_display = ('username', 'timedate', 'freetime', 'busytime')
 
-  fields = ['username', 'timedate', 'freetime']
+  fields = ['username', 'timedate', 'freetime', 'busytime']
 
 admin.site.register(EventList, EventListAdmin)
 admin.site.register(Dailyfreetime, DailyfreetimeAdmin)
